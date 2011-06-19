@@ -8,8 +8,8 @@ var document = require("jsdom").jsdom(),
     flot = document.createElement("script"),
     flot_text = document.createElement("script");
 
-var SERVER = 'localhost',
-    VHOST = 'graphs-new.mozilla.org';
+var VHOST = 'graphs-new.mozilla.org',
+    SERVER = VHOST; // location of image data JSON, e.g. 'localhost'
 
 window.Canvas = require('canvas');
 jQuery.getScript('http://' + VHOST + '/jq/jquery.flot.node-canvas.js', function() {
