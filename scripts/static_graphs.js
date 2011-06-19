@@ -109,14 +109,12 @@ function run() {
             plot = jQuery.plot(placeholder, plotData, plotOptions),
             node_canvas = plot.getCanvas(),
             ctx = node_canvas.getContext('2d'),
-            out = fs.createWriteStream('./images/dashboard/flot-' + 
-                testid + '-' + branchid + '-' + platformid + 
+            out = fs.createWriteStream('./images/dashboard/flot-' +
+                testid + '-' + branchid + '-' + platformid +
                 '_' + displayDays + '.png');
-            stream = node_canvas.createPNGStream();
-    
-        stream.on('data', function ( chunk ) {
-            out.write(chunk); 
-        });
+            buffer = node_canvas.toBuffer(function(err, buf){
+                out.write(buf);
+            });
     }
 
     function refreshGraphs(displayDays) 
